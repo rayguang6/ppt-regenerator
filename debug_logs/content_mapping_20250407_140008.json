@@ -1,0 +1,775 @@
+{
+  "slide_count": 16,
+  "slides": [
+    {
+      "slide_number": 1,
+      "slide_id": 256,
+      "slide_layout": "TITLE",
+      "texts": [],
+      "text_mappings": []
+    },
+    {
+      "slide_number": 2,
+      "slide_id": 257,
+      "slide_layout": "TITLE_AND_BODY",
+      "texts": [],
+      "text_mappings": []
+    },
+    {
+      "slide_number": 3,
+      "slide_id": 258,
+      "slide_layout": "Title & Bullets",
+      "texts": [
+        "OPENING",
+        "CUE CARD"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "OPENING"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "CUE CARD"
+        }
+      ]
+    },
+    {
+      "slide_number": 4,
+      "slide_id": 259,
+      "slide_layout": "Title & Bullets",
+      "texts": [
+        "我想问你一个问题…"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "我想问你一个问题…"
+        }
+      ]
+    },
+    {
+      "slide_number": 5,
+      "slide_id": 260,
+      "slide_layout": "Blank copy 5",
+      "texts": [
+        "你想不想创造一个",
+        "不受",
+        "时间",
+        "和",
+        "地点",
+        "限制的",
+        "ONLINE",
+        " 生意?"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 3,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "你想不想创造一个"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 1,
+          "run_idx": 0,
+          "text": "不受"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 1,
+          "run_idx": 1,
+          "text": "时间"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 1,
+          "run_idx": 2,
+          "text": "和"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 1,
+          "run_idx": 3,
+          "text": "地点"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 1,
+          "run_idx": 4,
+          "text": "限制的"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 1,
+          "run_idx": 5,
+          "text": "ONLINE"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 1,
+          "run_idx": 6,
+          "text": " 生意?"
+        }
+      ]
+    },
+    {
+      "slide_number": 6,
+      "slide_id": 261,
+      "slide_layout": "Blank copy 1",
+      "texts": [
+        "并且这",
+        "ONLINE生意",
+        "只要…",
+        "一次性制作",
+        " 就能达到：",
+        "多次",
+        "被动收入",
+        "无限次",
+        "影响力"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "并且这"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "ONLINE生意"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 2,
+          "text": "只要…"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "一次性制作"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 2,
+          "text": " 就能达到："
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 1,
+          "run_idx": 0,
+          "text": "多次"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 1,
+          "run_idx": 1,
+          "text": "被动收入"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 2,
+          "run_idx": 0,
+          "text": "无限次"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 2,
+          "run_idx": 1,
+          "text": "影响力"
+        }
+      ]
+    },
+    {
+      "slide_number": 7,
+      "slide_id": 262,
+      "slide_layout": "Title & Bullets",
+      "texts": [
+        "CREDIBILITY",
+        "CUE CARD"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "CREDIBILITY"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "CUE CARD"
+        }
+      ]
+    },
+    {
+      "slide_number": 8,
+      "slide_id": 263,
+      "slide_layout": "Blank copy 4",
+      "texts": [
+        "如何从",
+        "零",
+        "开始",
+        "经营起一个能让数百位学生",
+        "对你为之疯狂的",
+        "线上课程"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "如何从"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "零"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 2,
+          "text": "开始"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "经营起一个能让数百位学生"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 1,
+          "run_idx": 0,
+          "text": "对你为之疯狂的"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 1,
+          "run_idx": 1,
+          "text": "线上课程"
+        }
+      ]
+    },
+    {
+      "slide_number": 9,
+      "slide_id": 264,
+      "slide_layout": "Title & Bullets",
+      "texts": [
+        "SHOW STRIPE",
+        "CUE CARD"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "SHOW STRIPE"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "CUE CARD"
+        }
+      ]
+    },
+    {
+      "slide_number": 10,
+      "slide_id": 265,
+      "slide_layout": "Blank copy 3",
+      "texts": [
+        "ClickFunnels ",
+        "2 Comma Club"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "ClickFunnels "
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "2 Comma Club"
+        }
+      ]
+    },
+    {
+      "slide_number": 11,
+      "slide_id": 428,
+      "slide_layout": "Blank copy 1",
+      "texts": [
+        "【百万网课训练营】",
+        "课程会教你什么？",
+        "第一单元：",
+        "前制作业",
+        "第二单元：",
+        "制作课程内容",
+        "第三单元：",
+        "课程预售",
+        "第四单元：",
+        "正式开课",
+        "第五单元：",
+        "课程行销",
+        "第六单元：",
+        "长远发展"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "【百万网课训练营】"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "课程会教你什么？"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "第一单元："
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "前制作业"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 1,
+          "run_idx": 0,
+          "text": "第二单元："
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 1,
+          "run_idx": 1,
+          "text": "制作课程内容"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 2,
+          "run_idx": 0,
+          "text": "第三单元："
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 2,
+          "run_idx": 1,
+          "text": "课程预售"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 3,
+          "run_idx": 0,
+          "text": "第四单元："
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 3,
+          "run_idx": 1,
+          "text": "正式开课"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 4,
+          "run_idx": 0,
+          "text": "第五单元："
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 4,
+          "run_idx": 1,
+          "text": "课程行销"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 5,
+          "run_idx": 0,
+          "text": "第六单元："
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 5,
+          "run_idx": 1,
+          "text": "长远发展"
+        }
+      ]
+    },
+    {
+      "slide_number": 12,
+      "slide_id": 429,
+      "slide_layout": "Blank copy 1",
+      "texts": [
+        "BONUS #1：",
+        "一个月内赚 XXX 蓝图                       （USD $997)",
+        "BONUS #2：",
+        "随插即用销售模版                             （USD $699)",
+        "BONUS #3：",
+        "随插即用销售漏斗模版                     （USD $247)",
+        "BONUS #4",
+        "：",
+        "销售课程必备宝典                             （USD $997)",
+        "BONUS #5：",
+        "课程案列分析                                       (USD $397)",
+        "BONUS #6：",
+        "学员 Facebook 专区                        （USD ¥579）",
+        "你将获得…",
+        "终身会员",
+        "总价值：USD $8,913"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "BONUS #1："
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "一个月内赚 XXX 蓝图                       （USD $997)"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 1,
+          "run_idx": 0,
+          "text": "BONUS #2："
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 1,
+          "run_idx": 1,
+          "text": "随插即用销售模版                             （USD $699)"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 2,
+          "run_idx": 0,
+          "text": "BONUS #3："
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 2,
+          "run_idx": 1,
+          "text": "随插即用销售漏斗模版                     （USD $247)"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 3,
+          "run_idx": 0,
+          "text": "BONUS #4"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 3,
+          "run_idx": 1,
+          "text": "："
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 3,
+          "run_idx": 2,
+          "text": "销售课程必备宝典                             （USD $997)"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 4,
+          "run_idx": 0,
+          "text": "BONUS #5："
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 4,
+          "run_idx": 1,
+          "text": "课程案列分析                                       (USD $397)"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 5,
+          "run_idx": 0,
+          "text": "BONUS #6："
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 5,
+          "run_idx": 1,
+          "text": "学员 Facebook 专区                        （USD ¥579）"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "你将获得…"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "终身会员"
+        },
+        {
+          "shape_idx": 4,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "总价值：USD $8,913"
+        }
+      ]
+    },
+    {
+      "slide_number": 13,
+      "slide_id": 430,
+      "slide_layout": "TITLE_AND_BODY",
+      "texts": [
+        "IMAGINE ",
+        "(FUTURE PACING)",
+        "CUE CARD"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "IMAGINE "
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 1,
+          "run_idx": 0,
+          "text": "(FUTURE PACING)"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "CUE CARD"
+        }
+      ]
+    },
+    {
+      "slide_number": 14,
+      "slide_id": 431,
+      "slide_layout": "Blank copy 3",
+      "texts": [
+        "如果这些东西可以帮你…",
+        "制作出你的线上课程，并且赚进 RM x… ",
+        "那这 USD $8,913值不值得？",
+        "获得数十位，数百位甚至数千位的学生，并且然你有办法发挥你的影响力帮助这些学生，而且你在这过程中也会获得多人的掌声，认可，最重要的是你帮助这些学生而获得的成就感… ",
+        "那这 USD $8,913值不值得？",
+        "假设你真的对于销售课程没有任何天赋，你真的很差，你没有赚到我为你设的目标 RM XXX, 你只赚到 X 或 X吗，就算是这样，你还是赚。而且你也在过程中学到了一项新的技能，省至你还可以能在不知不觉中改变了别人的人生… ",
+        "那这 USD $8,913值不值得？"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "如果这些东西可以帮你…"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "制作出你的线上课程，并且赚进 RM x… "
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "那这 USD $8,913值不值得？"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 2,
+          "run_idx": 0,
+          "text": "获得数十位，数百位甚至数千位的学生，并且然你有办法发挥你的影响力帮助这些学生，而且你在这过程中也会获得多人的掌声，认可，最重要的是你帮助这些学生而获得的成就感… "
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 2,
+          "run_idx": 1,
+          "text": "那这 USD $8,913值不值得？"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 3,
+          "run_idx": 0,
+          "text": "假设你真的对于销售课程没有任何天赋，你真的很差，你没有赚到我为你设的目标 RM XXX, 你只赚到 X 或 X吗，就算是这样，你还是赚。而且你也在过程中学到了一项新的技能，省至你还可以能在不知不觉中改变了别人的人生… "
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 3,
+          "run_idx": 1,
+          "text": "那这 USD $8,913值不值得？"
+        }
+      ]
+    },
+    {
+      "slide_number": 15,
+      "slide_id": 432,
+      "slide_layout": "Blank copy 1",
+      "texts": [
+        "你有",
+        "两个选择",
+        "第一个选择：",
+        "我可以将 【百万网课训练营】卖的很便宜，我可以把它当成做公益，这样就会有很多人加入，但是我在前面也解释过了，如果我把课程卖的很便宜，我并不是在帮你，反而是在害你，因为没有人会认真看待一个不用付出就轻易获得的东西。",
+        "同时如果【百万网课训练营】是个很便宜的课程，我就无法提供每位学员最多的价值，最多的资源和最大的帮助，因为学生一定会很杂，这就是便宜的坏处。",
+        "第一个选择：",
+        "为课程定一个比较高的价钱，，你会付出多一点的投资，不过这样我就更能实际帮助你获得你要的成果，而不是那种没什么实际性帮助的课程。",
+        "你觉得哪一种方式比较好？"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "你有"
+        },
+        {
+          "shape_idx": 0,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "两个选择"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "第一个选择："
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "我可以将 【百万网课训练营】卖的很便宜，我可以把它当成做公益，这样就会有很多人加入，但是我在前面也解释过了，如果我把课程卖的很便宜，我并不是在帮你，反而是在害你，因为没有人会认真看待一个不用付出就轻易获得的东西。"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 2,
+          "run_idx": 0,
+          "text": "同时如果【百万网课训练营】是个很便宜的课程，我就无法提供每位学员最多的价值，最多的资源和最大的帮助，因为学生一定会很杂，这就是便宜的坏处。"
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 4,
+          "run_idx": 0,
+          "text": "第一个选择："
+        },
+        {
+          "shape_idx": 1,
+          "para_idx": 4,
+          "run_idx": 1,
+          "text": "为课程定一个比较高的价钱，，你会付出多一点的投资，不过这样我就更能实际帮助你获得你要的成果，而不是那种没什么实际性帮助的课程。"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "你觉得哪一种方式比较好？"
+        }
+      ]
+    },
+    {
+      "slide_number": 16,
+      "slide_id": 433,
+      "slide_layout": "Blank copy 1",
+      "texts": [
+        "最后我在问你一个问题…",
+        "想像一下你现在已经有一个",
+        "：",
+        "可以每个月都为你带来几万块，甚至几十万，几百万【被动收入】的线上课程",
+        "同时你每个月都可以发挥你的价值和影响力，帮助数十位、数百位的学生",
+        "时不时又会有人跑来跟你说谢谢，感谢你对他的帮助、改变他的人生",
+        "这对你来说有多少价值",
+        "？",
+        "你又愿意付出多少来获得一个这样的线长课程",
+        "？"
+      ],
+      "text_mappings": [
+        {
+          "shape_idx": 1,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "最后我在问你一个问题…"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "想像一下你现在已经有一个"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "："
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 1,
+          "run_idx": 0,
+          "text": "可以每个月都为你带来几万块，甚至几十万，几百万【被动收入】的线上课程"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 2,
+          "run_idx": 0,
+          "text": "同时你每个月都可以发挥你的价值和影响力，帮助数十位、数百位的学生"
+        },
+        {
+          "shape_idx": 2,
+          "para_idx": 3,
+          "run_idx": 0,
+          "text": "时不时又会有人跑来跟你说谢谢，感谢你对他的帮助、改变他的人生"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 0,
+          "run_idx": 0,
+          "text": "这对你来说有多少价值"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 0,
+          "run_idx": 1,
+          "text": "？"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 1,
+          "run_idx": 0,
+          "text": "你又愿意付出多少来获得一个这样的线长课程"
+        },
+        {
+          "shape_idx": 3,
+          "para_idx": 1,
+          "run_idx": 1,
+          "text": "？"
+        }
+      ]
+    }
+  ]
+}
