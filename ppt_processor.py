@@ -2,6 +2,7 @@ from typing import Dict, List, Any, Optional, Tuple
 import os
 import tempfile
 import time
+import threading
 
 from utils import (
     split_into_sections, 
@@ -18,29 +19,26 @@ from llm_service import LLMService
 class PPTProcessor:
     """Process PowerPoint presentations for content regeneration."""
     
-    def __init__(self, use_mock=False, api_key=None, debug=False, 
-                 max_slides_per_section: int = 50,   # Increased from 30
-                 max_total_slides: int = 500):       # Added total slides limit
+    def __init__(self, api_key=None, 
+                 max_slides_per_section: int = 50,
+                 max_total_slides: int = 500):
         """
         Initialize the PPT processor.
         
         Args:
-            use_mock: Whether to use mock LLM responses
             api_key: API key for LLM service
-            debug: Whether to save debug information
             max_slides_per_section: Maximum slides to process in one section
             max_total_slides: Maximum total slides allowed
         """
-        self.debug = debug
         self.max_slides_per_section = max_slides_per_section
         self.max_total_slides = max_total_slides
         
-        self.llm_service = LLMService(api_key=api_key, use_mock=use_mock)
-        self.debug_info = []  # Store debug info in memory
+        self.llm_service = LLMService(api_key=api_key)
     
     def process_presentation(self, input_path: str, output_path: str, 
                            max_slides_per_section: int = None,
-                           user_info: str = "") -> Dict[str, Any]:
+                           user_info: str = "", 
+                           progress_callback=None) -> Dict[str, Any]:
         """
         Process a full presentation, regenerating content while preserving style.
         
@@ -49,6 +47,7 @@ class PPTProcessor:
             output_path: Path to save the modified PowerPoint file
             max_slides_per_section: Override default section size
             user_info: User's industry and use case information
+            progress_callback: Optional callback function to report progress (current_slide, total_slides)
             
         Returns:
             Dictionary with processing results and statistics
@@ -60,7 +59,7 @@ class PPTProcessor:
             max_slides_per_section = self.max_slides_per_section
         
         # Step 1: Read the presentation and extract content
-        presentation_info = read_ppt(input_path, debug=False)
+        presentation_info = read_ppt(input_path)
         content_map = extract_content_with_mapping(presentation_info)
         
         # Validate total slides
@@ -89,15 +88,14 @@ class PPTProcessor:
             "warnings": content_map.get("warnings", [])
         }
         
-        self.debug_info.append({
-            "stage": "processing_start",
-            "stats": stats,
-            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
-        })
-        
         # Step 3: Process each section with context management
         previous_context = ""
         key_concepts = {}
+        slides_processed = 0
+        
+        # Report initial progress
+        if progress_callback:
+            progress_callback(0, total_slides)
         
         for section_idx, section in enumerate(sections):
             section_start = time.time()
@@ -110,14 +108,61 @@ class PPTProcessor:
                 "start_time": section_start
             }
             
-            # Process this section with retry mechanism
-            section_info = self._process_section_with_retry(
-                section, 
-                previous_context, 
-                key_concepts,
-                user_info,
-                section_idx
-            )
+            # For longer sections, simulate progress during API call with time estimates
+            if progress_callback and len(section) > 3:
+                # Start a background thread to simulate progress
+                # Hold a reference to control the simulation
+                simulation_active = {'active': True}
+                
+                def simulate_progress():
+                    # Estimate ~3 seconds per slide for LLM processing
+                    estimated_time_per_slide = 3
+                    start_slide = slides_processed
+                    num_slides = len(section)
+                    
+                    # Simulate progress in smaller increments
+                    for i in range(1, num_slides):
+                        if not simulation_active['active']:
+                            break
+                        # Wait a bit to simulate progress
+                        time.sleep(min(1.0, estimated_time_per_slide / 5))
+                        # Calculate partial section progress
+                        partial_progress = start_slide + (i * 0.8)  # Only go to 80% of section
+                        progress_callback(int(partial_progress), total_slides)
+                
+                # Start simulation thread
+                progress_thread = threading.Thread(target=simulate_progress)
+                progress_thread.daemon = True
+                progress_thread.start()
+                
+                try:
+                    # Process this section with retry mechanism
+                    section_info = self._process_section_with_retry(
+                        section, 
+                        previous_context, 
+                        key_concepts,
+                        user_info,
+                        section_idx
+                    )
+                finally:
+                    # Stop simulation
+                    simulation_active['active'] = False
+            else:
+                # For smaller sections, just process normally
+                section_info = self._process_section_with_retry(
+                    section, 
+                    previous_context, 
+                    key_concepts,
+                    user_info,
+                    section_idx
+                )
+            
+            # Update slides processed count
+            slides_processed += len(section)
+            
+            # Report actual progress after processing section
+            if progress_callback:
+                progress_callback(slides_processed, total_slides)
             
             # Update the content map with regenerated text
             for slide_idx, slide in enumerate(section):
@@ -157,12 +202,6 @@ class PPTProcessor:
             
             stats["section_details"].append(section_record)
             stats["processing_times"].append(section_record["duration"])
-            
-            self.debug_info.append({
-                "stage": f"section_{section_idx}_processing",
-                "section_record": section_record,
-                "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
-            })
         
         # Step 4: Modify the PowerPoint with regenerated content
         modification_start = time.time()
@@ -174,15 +213,6 @@ class PPTProcessor:
         stats["modification_time"] = stats["end_time"] - modification_start
         stats["success"] = success
         stats["key_concepts"] = key_concepts
-        
-        self.debug_info.append({
-            "stage": "processing_complete",
-            "stats": stats,
-            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S")
-        })
-        
-        # Also save the LLM service debug info
-        stats["llm_debug_info"] = self.llm_service.debug_info
         
         return stats
     
@@ -214,7 +244,10 @@ class PPTProcessor:
         key_concepts: Dict[str, Any],
         user_info: str,
         section_idx: int,
-        max_retries: int = 3
+        max_retries: int = 3,
+        progress_callback=None,
+        current_slide_count=0,
+        total_slides=0
     ) -> List[Dict[str, Any]]:
         """
         Process a section with retry mechanism and error handling.
@@ -226,6 +259,9 @@ class PPTProcessor:
             user_info: User context information
             section_idx: Index of current section
             max_retries: Maximum retry attempts
+            progress_callback: Optional callback for progress updates
+            current_slide_count: Current number of slides processed so far
+            total_slides: Total slides in the presentation
             
         Returns:
             Processed section with regenerated content

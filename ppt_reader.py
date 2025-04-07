@@ -2,29 +2,35 @@ from pptx import Presentation
 import os
 from typing import Dict, List, Any, Optional
 import logging
+import sys
 
-def read_ppt(file_path: str, debug: bool = False) -> Dict[str, Any]:
+def read_ppt(file_path: str) -> Dict[str, Any]:
     """
     Read a PowerPoint file and return detailed information about its content with tracking data.
     
     Args:
         file_path: Path to the PowerPoint file
-        debug: Whether to save debug information
         
     Returns:
         Dictionary containing detailed information about the presentation
     """
     # Configure logging
     logging.basicConfig(
-        level=logging.WARNING, 
-        format='%(asctime)s - %(levelname)s: %(message)s'
+        level=logging.INFO, 
+        format='%(asctime)s - %(levelname)s: %(message)s',
+        stream=sys.stdout
     )
     
+    logger = logging.getLogger("PPTReader")
+    logger.info(f"Opening PowerPoint file: {os.path.basename(file_path)}")
+    
     prs = Presentation(file_path)
+    total_slides = len(prs.slides)
+    logger.info(f"Found {total_slides} slides in the presentation")
     
     # Get presentation-level information
     presentation_info = {
-        "slide_count": len(prs.slides),
+        "slide_count": total_slides,
         "slide_width": prs.slide_width,
         "slide_height": prs.slide_height,
         "slides": [],
@@ -78,10 +84,14 @@ def read_ppt(file_path: str, debug: bool = False) -> Dict[str, Any]:
                                 }
                                 shape_info["text_map"].append(run_map)
             except Exception as e:
-                print(f"Warning: Could not process text frame in shape {shape.name}: {str(e)}")
+                logger.warning(f"Could not process text frame in shape {shape.name}: {str(e)}")
     
     # Extract detailed information from each slide
     for i, slide in enumerate(prs.slides):
+        # Log progress for every 5 slides or for the first/last slide
+        if i == 0 or i == len(prs.slides) - 1 or (i + 1) % 5 == 0:
+            logger.info(f"Processing slide {i+1} of {len(prs.slides)}")
+            
         slide_info = {
             "slide_number": i + 1,
             "slide_id": slide.slide_id if hasattr(slide, "slide_id") else None,
@@ -115,7 +125,7 @@ def read_ppt(file_path: str, debug: bool = False) -> Dict[str, Any]:
                         "columns": len(table.columns) if len(table.rows) > 0 else 0
                     }
                 except Exception as e:
-                    print(f"Warning: Could not process table in shape {shape.name}: {str(e)}")
+                    logger.warning(f"Could not process table in shape {shape.name}: {str(e)}")
             
             slide_info["shapes"].append(shape_info)
             
@@ -124,6 +134,12 @@ def read_ppt(file_path: str, debug: bool = False) -> Dict[str, Any]:
                 slide_info["texts"].append(text_map["text"])
         
         presentation_info["slides"].append(slide_info)
+    
+    # Final analysis statistics
+    text_count = sum(len(slide.get("texts", [])) for slide in presentation_info["slides"])
+    shape_count = sum(len(slide.get("shapes", [])) for slide in presentation_info["slides"])
+    
+    logger.info(f"Analysis complete: {total_slides} slides, {shape_count} shapes, {text_count} text elements")
     
     return presentation_info
 

@@ -9,18 +9,14 @@ import random
 class LLMService:
     """Service to handle interactions with LLM APIs."""
     
-    def __init__(self, api_key=None, use_mock=False):
+    def __init__(self, api_key=None):
         """
         Initialize the LLM service.
         
         Args:
             api_key: DeepSeek API key (or None to use environment variable)
-            use_mock: Whether to use the mock LLM service instead of real API
         """
         self.api_key = api_key or os.environ.get("DEEPSEEK_API_KEY")
-        self.use_mock = use_mock
-        self.debug_mode = False  # No longer saving debug files
-        self.debug_info = []  # Store debug info in memory for display
     
     def regenerate_content(self, 
                            content: List[Dict], 
@@ -39,28 +35,7 @@ class LLMService:
         Returns:
             List of dictionaries with regenerated text
         """
-        debug_entry = {
-            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-            "content": content,
-            "previous_context": previous_context,
-            "key_concepts": key_concepts or {},
-            "user_info": user_info
-        }
-        
-        self.debug_info.append(debug_entry)
-        
-        if self.use_mock:
-            result = self._mock_regenerate_content(content, previous_context, key_concepts, user_info)
-        else:
-            result = self._api_regenerate_content(content, previous_context, key_concepts, user_info)
-        
-        result_entry = {
-            "timestamp": time.strftime("%Y-%m-%d %H:%M:%S"),
-            "result": result
-        }
-        self.debug_info.append(result_entry)
-        
-        return result
+        return self._api_regenerate_content(content, previous_context, key_concepts, user_info)
     
     def _build_prompt(self, content, previous_context, key_concepts, user_info):
         """Build the prompt for the LLM."""
@@ -383,104 +358,3 @@ IMPORTANT: DO NOT keep the original wording. Your goal is to create fresh, origi
             ]
             
             return placeholder_content
-    
-    def _mock_regenerate_content(self, content, previous_context, key_concepts, user_info=""):
-        """
-        Generate mock responses for testing without API calls.
-        Creates more realistic and diverse content changes.
-        """
-        # Simulate API latency
-        time.sleep(0.5)
-        
-        # Define some industry-specific transformations
-        industry_transformations = {
-            "healthcare": [
-                "This approach improves patient outcomes by focusing on preventive care.",
-                "Healthcare providers can implement this solution to enhance clinical workflows.",
-                "Patients will benefit from this integrated approach to medical care.",
-                "This strategy aligns with value-based care models in modern healthcare."
-            ],
-            "finance": [
-                "This financial strategy optimizes return on investment while managing risk.",
-                "Investors can leverage these market insights to make informed decisions.",
-                "This approach complies with regulatory requirements while maximizing efficiency.",
-                "Financial institutions can implement this solution to improve customer experience."
-            ],
-            "technology": [
-                "This technical solution scales efficiently across distributed systems.",
-                "Developers can implement this approach using modern software practices.",
-                "This architecture provides resilience and fault tolerance for critical systems.",
-                "Technology teams can leverage this framework to accelerate product development."
-            ],
-            "education": [
-                "This educational approach improves student engagement through active learning.",
-                "Teachers can implement these strategies to accommodate diverse learning styles.",
-                "This curriculum framework aligns with modern educational standards.",
-                "Students will develop critical thinking skills through this methodology."
-            ]
-        }
-        
-        # Choose appropriate transformations based on user info
-        selected_transformations = []
-        if user_info:
-            lower_user_info = user_info.lower()
-            for industry, phrases in industry_transformations.items():
-                if industry in lower_user_info:
-                    selected_transformations = phrases
-                    break
-        
-        # If no specific industry detected, use generic transformations
-        if not selected_transformations:
-            selected_transformations = [
-                "This improved approach provides better results while maintaining efficiency.",
-                "Stakeholders can implement this strategy to achieve organizational goals.",
-                "This solution addresses key challenges identified in the original content.",
-                "Organizations will benefit from this streamlined approach to operations."
-            ]
-        
-        print(f"Using mock mode with {len(selected_transformations)} transformation patterns")
-        
-        # Process each slide
-        regenerated_content = []
-        for slide in content:
-            regenerated_slide = slide.copy()
-            
-            if "texts" in slide:
-                regenerated_texts = []
-                for text in slide["texts"]:
-                    # Create more diverse mock regenerations
-                    original_words = text.split()
-                    word_count = len(original_words)
-                    
-                    if word_count < 5:
-                        # For very short text, just add a prefix
-                        regenerated_text = f"Updated: {text}"
-                    elif word_count < 15:
-                        # For short text, replace with a transformation from our list
-                        regenerated_text = random.choice(selected_transformations)
-                    else:
-                        # For longer text, create a more complex transformation
-                        parts = []
-                        
-                        # Add an industry-specific opening
-                        parts.append(random.choice(selected_transformations))
-                        
-                        # Keep some of the original content but reword it
-                        if word_count > 30:
-                            # For longer text, include a reworded middle section
-                            middle_part = " ".join(original_words[10:25])
-                            parts.append(f"The core concept of \"{middle_part}\" remains essential.")
-                        
-                        # Add a conclusion
-                        parts.append("This approach provides measurable improvements over traditional methods.")
-                        
-                        # Join all parts
-                        regenerated_text = " ".join(parts)
-                    
-                    regenerated_texts.append(regenerated_text)
-                
-                regenerated_slide["texts"] = regenerated_texts
-            
-            regenerated_content.append(regenerated_slide)
-        
-        return regenerated_content
