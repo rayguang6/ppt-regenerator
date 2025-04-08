@@ -70,6 +70,7 @@ The content should be tailored to the following industry/use case:
         
         # Build the full prompt
         prompt = f"""You are a professional presentation content regenerator. Your task is to completely rewrite the content for a PowerPoint presentation while maintaining the original structure, purpose, and approximate length.
+IMPORTANT: This is a PROVEN SALES FRAMEWORK for selling courses. Maintain all persuasive elements, psychological triggers, and call-to-action structures while changing only the specific topic and examples.
 
 {user_context}
 {concepts_text}
@@ -80,12 +81,18 @@ CURRENT SLIDES TO REGENERATE:
 {slides_text}
 
 INSTRUCTIONS:
-1. COMPLETELY REGENERATE each slide's text with NEW WORDING but similar meaning.
-2. Keep the same number of text blocks per slide.
-3. Maintain approximately the same length for each text block.
-4. Ensure consistency with the previous content summary and key concepts.
-5. Maintain any numbering, bullets, or sequences present in the original.
-6. Return your response as a JSON array of slides, with each slide containing the same structure as the input.
+1. ADAPT each slide's text to the new course topic while PRESERVING the original persuasive structure
+2. Keep the same number of text blocks per slide
+3. Maintain approximately the same length for each text block
+4. Never cut sentences in half - always complete thoughts
+5. Preserve all sales psychology elements like:
+   - Attention-grabbing hooks and questions
+   - Credibility statements
+   - Pain points and objection handling
+   - Call-to-action language
+   - Social proof references
+   - Urgency and scarcity elements
+6. Return your response as a properly formatted JSON array
 
 FORMAT OF RESPONSE:
 [
@@ -104,7 +111,7 @@ FORMAT OF RESPONSE:
   }}
 ]
 
-IMPORTANT: DO NOT keep the original wording. Your goal is to create fresh, original content that conveys the same information but with completely new language.
+Remember: Your goal is NOT to create entirely new content, but to ADAPT the proven sales framework to the new course topic. The structure and persuasive elements are what make this framework effective.
 """
         return prompt
     

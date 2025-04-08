@@ -75,6 +75,8 @@ class PPTProcessor:
             content_map["slides"], 
             max_slides_per_section
         )
+
+        print(f"User information being passed to LLM:\n{user_info}")
         
         # Statistics and tracking
         stats = {

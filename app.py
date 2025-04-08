@@ -43,7 +43,7 @@ st.set_page_config(
     page_title="PPT Regenerator",
     page_icon="📊",
     layout="wide",
-    initial_sidebar_state="collapsed"
+    # initial_sidebar_state="collapsed"
 )
 
 # Apply custom CSS
@@ -86,12 +86,39 @@ def main():
         # File uploader with clearer instructions
         uploaded_file = st.file_uploader("Upload a PowerPoint file", type=["pptx"], key="pptx_uploader")
         
-        # User context input
-        user_info = st.text_area(
-            "Tell us about your target audience (optional)",
-            placeholder="Example: Healthcare technology focused on patient engagement. Target audience is hospital administrators and clinicians.",
-            key="user_info_textarea"
+        # Simplified user input focusing on essentials
+        st.subheader("Tell us about your course")
+
+        course_topic = st.text_input(
+            "What specific skill or knowledge does your course teach?",
+            placeholder="e.g., Day trading stocks, Watercolor painting, Facebook ads, etc.",
+            help="Be specific about what students will learn"
         )
+
+        main_outcome = st.text_area(
+            "What's the #1 result your students will achieve?",
+            placeholder="e.g., Create profitable trading systems with just 30 minutes per day",
+            help="The primary transformation or outcome students will experience"
+        )
+
+        # Optional third field for better results
+        target_audience = st.text_input(
+            "Who is this course for? (optional)",
+            placeholder="e.g., Busy professionals, Beginners with no experience, etc.",
+            help="Your ideal student profile"
+        )
+
+        # Combine all inputs into user_info for the prompt
+        user_info = f"""
+        COURSE INFORMATION:
+        What This Course Teaches: {course_topic}
+
+        PRIMARY OUTCOME:
+        {main_outcome}
+        """
+
+        if target_audience:
+            user_info += f"\nTARGET AUDIENCE:\n{target_audience}"
         
         if uploaded_file is not None:
             # Create a temporary file to save the uploaded content
