@@ -265,6 +265,9 @@ Remember: Your goal is NOT to create entirely new content, but to ADAPT the prov
                                 # Advanced JSON parsing with multiple fallback strategies
                                 try:
                                     # Primary parsing method
+                                    if not assistant_message.strip():
+                                        raise ValueError("Empty response received from API")
+                                        
                                     batch_regenerated = json.loads(assistant_message)
                                     
                                     # Validate regenerated content structure
@@ -279,17 +282,43 @@ Remember: Your goal is NOT to create entirely new content, but to ADAPT the prov
                                     print(f"JSON parsing failed on attempt {attempt + 1}: {parse_error}")
                                     
                                     # Try extracting JSON from markdown code block
-                                    json_match = re.search(r'```json(.*?)```', assistant_message, re.DOTALL)
+                                    json_match = re.search(r'```(?:json)?\s*([\s\S]*?)\s*```', assistant_message, re.DOTALL)
                                     if json_match:
                                         try:
-                                            batch_regenerated = json.loads(json_match.group(1).strip())
-                                            regenerated_content.extend(batch_regenerated)
-                                            break
+                                            json_content = json_match.group(1).strip()
+                                            if json_content:
+                                                batch_regenerated = json.loads(json_content)
+                                                if isinstance(batch_regenerated, list):
+                                                    regenerated_content.extend(batch_regenerated)
+                                                    break
                                         except Exception as e:
                                             print(f"Markdown JSON extraction failed: {e}")
                                     
-                                    # Last resort: manual parsing
+                                    # Look for array notation
+                                    array_match = re.search(r'\[\s*{[\s\S]*}\s*\]', assistant_message, re.DOTALL)
+                                    if array_match:
+                                        try:
+                                            array_content = array_match.group(0)
+                                            batch_regenerated = json.loads(array_content)
+                                            if isinstance(batch_regenerated, list):
+                                                regenerated_content.extend(batch_regenerated)
+                                                break
+                                        except Exception as e:
+                                            print(f"Array extraction failed: {e}")
+                                    
+                                    # If this is the last attempt, increase timeout
                                     if attempt == max_retries - 1:
+                                        if "timeout" in str(parse_error).lower():
+                                            print("Increasing timeout for final attempt")
+                                            timeout = 300  # 5 minutes for final attempt
+                                        
+                                        # Last attempt failed, prepare to raise error
+                                        error_details = {
+                                            "error_type": type(parse_error).__name__,
+                                            "error_message": str(parse_error),
+                                            "response_snippet": assistant_message[:100] + "..." if len(assistant_message) > 100 else assistant_message
+                                        }
+                                        error_log.append(error_details)
                                         raise parse_error
                             
                             else:

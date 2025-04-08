@@ -122,15 +122,25 @@ class PPTProcessor:
                     start_slide = slides_processed
                     num_slides = len(section)
                     
-                    # Simulate progress in smaller increments
-                    for i in range(1, num_slides):
-                        if not simulation_active['active']:
-                            break
-                        # Wait a bit to simulate progress
-                        time.sleep(min(1.0, estimated_time_per_slide / 5))
-                        # Calculate partial section progress
-                        partial_progress = start_slide + (i * 0.8)  # Only go to 80% of section
-                        progress_callback(int(partial_progress), total_slides)
+                    try:
+                        # Simulate progress in smaller increments
+                        for i in range(1, num_slides):
+                            if not simulation_active['active']:
+                                break
+                            # Wait a bit to simulate progress
+                            time.sleep(min(1.0, estimated_time_per_slide / 5))
+                            # Calculate partial section progress
+                            partial_progress = start_slide + (i * 0.8)  # Only go to 80% of section
+                            
+                            try:
+                                progress_callback(int(partial_progress), total_slides)
+                            except Exception as e:
+                                # Safely handle errors in progress callback
+                                print(f"Progress callback error (non-critical): {str(e)}")
+                                # Don't break the loop on errors, just continue silently
+                    except Exception as e:
+                        # Catch any other errors to prevent thread crashes
+                        print(f"Simulation thread error (non-critical): {str(e)}")
                 
                 # Start simulation thread
                 progress_thread = threading.Thread(target=simulate_progress)

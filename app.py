@@ -161,7 +161,7 @@ def main():
                             else:
                                 # Process the PowerPoint immediately on this tab
                                 st.session_state.regeneration_started = True
-                                st.experimental_rerun()
+                                st.rerun()
                     
                     # If regeneration has been started, show progress
                     if st.session_state.regeneration_started and not st.session_state.output_file_created:
@@ -241,7 +241,7 @@ def main():
                                     st.success(f"Successfully processed {results['total_slides']} slides!")
                                     
                                     # Refresh to show download button
-                                    st.experimental_rerun()
+                                    st.rerun()
                                 else:
                                     st.error("Processing failed. No output file was generated.")
                                     st.session_state.regeneration_started = False
@@ -298,7 +298,7 @@ def main():
                             st.session_state.output_bytes = None
                             st.session_state.processing_results = None
                             st.session_state.before_after = []
-                            st.experimental_rerun()
+                            st.rerun()
                             
                         # Prompt to view detailed results
                         st.info("For detailed content comparison, check the Results tab.")
