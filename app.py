@@ -384,7 +384,7 @@ def main():
                         with st.expander("Processing Warnings"):
                             for warning in results["warnings"]:
                                 st.warning(warning)
-                
+                 
                 st.button("Start Over", key="process_again_button", on_click=lambda: setattr(st.session_state, "output_file_created", False) or setattr(st.session_state, "active_tab", "Upload"))
                 
                 # Show before & after content without tabs
